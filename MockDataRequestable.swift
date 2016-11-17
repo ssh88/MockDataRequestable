@@ -9,7 +9,7 @@
 import Foundation
 
 enum FileType: String {
-    case JSON = ".json"
+    case JSON = "json"
 }
 
 protocol MockDataRequestable {
