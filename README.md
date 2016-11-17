@@ -1,7 +1,5 @@
 # MockDataRequestable
-Swift protocol to easily parse mock data files to use in your unit test
-
-Really simple protocol to retrieve and parse a mock data file - only supports JSON right now.
+Really simple Swift protocol to easily parse mock data files to use in your unit tests - only supports JSON right now.
 
 ### Example
 
@@ -18,3 +16,15 @@ Then when you need to use your mock data file simply call the ```serializedJSON:
 ```
 
 Currently only supports JSON
+
+### Requirements
+
+iOS 9.0+
+Swift 3
+Xcode 8
+
+### Integration
+
+## CocoaPods
+
+Will be a pod soon :)
