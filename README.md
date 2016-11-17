@@ -20,7 +20,9 @@ Currently only supports JSON
 ### Requirements
 
 iOS 9.0+
+
 Swift 3
+
 Xcode 8
 
 ### Integration
