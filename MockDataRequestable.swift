@@ -13,7 +13,6 @@ enum FileType: String {
 }
 
 protocol MockDataRequestable {
-    
     func serializedJSON(from fileName: String) -> [String : AnyObject]?
 }
 
@@ -21,9 +20,7 @@ extension MockDataRequestable {
     
     func serializedJSON(from fileName: String) -> [String : AnyObject]? {
         
-        //check file exists at path
         guard let path = Bundle.main.path(forResource: fileName, ofType: FileType.JSON.rawValue) else {
-            
             debugPrint("Error: Unable to find json file '\(fileName)'")
             return nil
         }
@@ -31,7 +28,6 @@ extension MockDataRequestable {
         do {
             let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
             guard let mockData = try JSONSerialization.jsonObject(with: jsonData, options:[]) as? [String : AnyObject] else {
-                
                 debugPrint("Error: Incorrect JSON format for file '\(fileName)'")
                 return nil
             }
