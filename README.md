@@ -12,7 +12,7 @@ class MyServiceTests: XCTestCase, MockDataRequestable {
 When you need to use your mock data file simply call the ```serializedJSON:from:``` function by passing in the file name (excluding the file extension)
 
 ```
- guard let responseData = serializedJSON(from: "mockResponse") else {  return }
+ guard let responseData = serializedMockJSON(from: "mockResponse") else {  return }
 ```
 
 Currently only supports JSON
