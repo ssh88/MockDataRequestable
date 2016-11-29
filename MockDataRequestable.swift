@@ -8,19 +8,15 @@
 
 import Foundation
 
-enum FileType: String {
-    case JSON = "json"
-}
-
 protocol MockDataRequestable {
-    func serializedJSON(from fileName: String) -> [String : AnyObject]?
+     func serializedMockJSON(fromFile fileName: String) -> [String : AnyObject]?
 }
 
 extension MockDataRequestable {
     
-    func serializedJSON(from fileName: String) -> [String : AnyObject]? {
+    func serializedMockJSON(fromFile fileName: String) -> [String : AnyObject]? {
         
-        guard let path = Bundle.main.path(forResource: fileName, ofType: FileType.JSON.rawValue) else {
+        guard let path = Bundle.main.path(forResource: fileName, ofType: "json") else {
             debugPrint("Error: Unable to find json file '\(fileName)'")
             return nil
         }
