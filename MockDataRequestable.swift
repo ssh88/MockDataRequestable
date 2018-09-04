@@ -9,14 +9,16 @@
 import Foundation
 
 protocol MockDataRequestable {
-     func serializedMockJSON(fromFile fileName: String) -> [String : AnyObject]?
+    func serializedMockJSON(from fileName: String) -> [String : AnyObject]?
 }
 
-extension MockDataRequestable {
+extension MockDataRequestable where Self : XCTestCase {
     
-    func serializedMockJSON(fromFile fileName: String) -> [String : AnyObject]? {
+    func serializedMockJSON(from fileName: String) -> [String : AnyObject]? {
         
-        guard let path = Bundle.main.path(forResource: fileName, ofType: "json") else {
+        let bundle = Bundle(for: type(of: self))
+        
+        guard let path = bundle.path(forResource: fileName, ofType: "json") else {
             debugPrint("Error: Unable to find json file '\(fileName)'")
             return nil
         }
@@ -34,3 +36,4 @@ extension MockDataRequestable {
         }
     }
 }
+
