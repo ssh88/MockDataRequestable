@@ -1,5 +1,5 @@
 # MockDataRequestable
-Really simple Swift protocol to easily parse mock data files to use in your unit tests - only supports JSON right now.
+Really simple Swift protocol to easily parse mock data files to use in your unit tests - currently only supports JSON.
 
 ### Usage
 
