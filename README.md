@@ -9,16 +9,31 @@ First conform to the protocol
 class MyServiceTests: XCTestCase, MockDataRequestable {
 ```
 
-When you need to use your mock data file simply call the ```serializedJSON:from:``` function by passing in the file name (excluding the file extension) as shown below:
+When you need to use your mock data file simply call one of the 4 following functions depending on your required output:
+```
+    //Returns a [String : AnyObject] dictonary from a mock json file
+    func mockDictionary(fromJsonFile filename: String) -> [String : AnyObject]?
+    
+    //Returns a data object from a mock json file
+    func mockData(fromJsonFile filename: String) -> Data?
+    
+    //Decodes and returns a decodable object from a mock json file
+    func mockObject<T: Decodable>(_ type: T.Type, fromJsonFile filename: String) -> T?
+    
+    //Decodes and returns an array of decodable objects from a mock json file
+    func mockObjects<T: Decodable>(_ type: T.Type, fromJsonFile filename: String) -> [T]?
+```
+
+For example to get a simple ```[String : AnyObject]``` dictonary call the ```mockDictionary:fromJsonFile:``` function by passing in the file name (excluding the file extension) as shown below:
 
 ```
- guard let responseData = serializedMockJSON(from: "mockResponse") else {  return }
+ guard let mockObject = mockDictionary(fromJsonFile: "mockResponse") else {  return }
 ```
 
-Though let be real, why would you guard in a unit test!, practical example is to simply call with a force unwrap:
+Though lets be real, why would you guard in a unit test!, practical example is to fail early so we simply call with a force unwrap:
 
 ```
- let responseData = serializedMockJSON(from: "mockResponse")!
+ let responseData = mockDictionary(fromJsonFile: "mockResponse")!
 ```
 
 Again, currently only supports JSON
