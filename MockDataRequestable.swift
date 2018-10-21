@@ -38,14 +38,14 @@ extension MockDataRequestable where Self : XCTestCase {
         let bundle = Bundle(for: type(of: self))
         
         guard let path = bundle.path(forResource: filename, ofType: "json") else {
-            debugPrint("Error: Unable to find json file '\(filename)'")
+            debugPrint("Error: Unable to find json file \(filename)")
             return nil
         }
         
         do {
             let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
             guard let mockData = try JSONSerialization.jsonObject(with: jsonData, options:[]) as? [String : AnyObject] else {
-                debugPrint("Error: Incorrect JSON format for file '\(filename)'")
+                debugPrint("Error: Incorrect JSON format for file \(filename)")
                 return nil
             }
             return mockData
@@ -62,7 +62,7 @@ extension MockDataRequestable where Self : XCTestCase {
             let data = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
             return data
         } catch {
-            debugPrint("Error: unable to create mock data object for file '\(filename)'. /(error.localizedDescription)")
+            debugPrint("Error: unable to create mock data object for file \(filename). \(error.localizedDescription)")
             return nil
         }
     }
@@ -91,5 +91,3 @@ extension MockDataRequestable where Self : XCTestCase {
         }
     }
 }
-
-
