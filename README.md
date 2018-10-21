@@ -33,7 +33,7 @@ For example to get a simple ```[String : AnyObject]``` dictonary call the ```moc
 Though lets be real, why would you guard in a unit test!, practical example is to fail early so we simply call with a force unwrap:
 
 ```swift
- let responseData = mockDictionary(fromJsonFile: "mockResponse")!
+ let mockObject = mockDictionary(fromJsonFile: "mockResponse")!
 ```
 
 Again, currently only supports JSON
