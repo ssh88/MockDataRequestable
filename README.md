@@ -5,12 +5,12 @@ Really simple Swift protocol to easily parse mock data files to use in your unit
 
 First conform to the protocol
 
-```
+```swift
 class MyServiceTests: XCTestCase, MockDataRequestable {
 ```
 
 When you need to use your mock data file simply call one of the 4 following functions depending on your required output:
-```
+```swift
     //Returns a [String : AnyObject] dictonary from a mock json file
     func mockDictionary(fromJsonFile filename: String) -> [String : AnyObject]?
     
@@ -26,13 +26,13 @@ When you need to use your mock data file simply call one of the 4 following func
 
 For example to get a simple ```[String : AnyObject]``` dictonary call the ```mockDictionary:fromJsonFile:``` function by passing in the file name (excluding the file extension) as shown below:
 
-```
+```swift
  guard let mockObject = mockDictionary(fromJsonFile: "mockResponse") else {  return }
 ```
 
 Though lets be real, why would you guard in a unit test!, practical example is to fail early so we simply call with a force unwrap:
 
-```
+```swift
  let responseData = mockDictionary(fromJsonFile: "mockResponse")!
 ```
 
