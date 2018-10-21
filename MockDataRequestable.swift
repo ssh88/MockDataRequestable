@@ -34,7 +34,6 @@ protocol MockDataRequestable {
 extension MockDataRequestable where Self : XCTestCase {
     
     func mockDictionary(fromJsonFile filename: String) -> [String : AnyObject]? {
-        
         let bundle = Bundle(for: type(of: self))
         
         guard let path = bundle.path(forResource: filename, ofType: "json") else {
